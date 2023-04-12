@@ -1,0 +1,16 @@
+#!/bin/sh /etc/rc.common
+
+START=99 
+STOP=0
+
+start() {        
+        echo start
+        # commands to launch application
+	/usr/bin/wifi.sh&
+}                 
+
+stop() {          
+        echo stop
+        # commands to kill application 
+	kill $(ps | grep wifi.sh  | grep -v grep | awk '{ print $1 }')
+}
